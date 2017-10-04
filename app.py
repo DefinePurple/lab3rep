@@ -1,4 +1,3 @@
-
 from flask import Flask
 from flask_mysqldb import MySQL
 mysql = MySQL()
@@ -6,9 +5,9 @@ app = Flask(__name__)
 # My SQL Instance configurations 
 # Change the HOST IP and Password to match your instance configurations
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'P@ssw0rd'
-app.config['MYSQL_DB'] = 'studentbook'
-app.config['MYSQL_HOST'] = '35.195.195.114'
+app.config['MYSQL_PASSWORD'] = 'password1234'
+app.config['MYSQL_DB'] = 'STUDENTBOOK'
+app.config['MYSQL_HOST'] = '146.148.119.225'
 mysql.init_app(app)
 
 # The first route to access the webservice from http://external-ip:5000/ 
@@ -16,7 +15,7 @@ mysql.init_app(app)
 @app.route("/")
 def hello(): # Name of the method
     cur = mysql.connection.cursor() #create a connection to the SQL instance
-    cur.execute('''SELECT * FROM students''') # execute an SQL statment
+    cur.execute('''SELECT * FROM STUDENTS''') # execute an SQL statment
     rv = cur.fetchall() #Retreive all rows returend by the SQL statment
     return str(rv)      #Return the data in a string format
 if __name__ == "__main__":
